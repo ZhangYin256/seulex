@@ -1,0 +1,38 @@
+--- MERMAID NFA BEGIN ---
+graph TD
+  start([start])
+  start --> q12
+  q0((0))
+  q1((1))
+  q2((2))
+  q3((3))
+  q4((4))
+  q5(((5)))
+  q6((6))
+  q7((7))
+  q8((8))
+  q9((9))
+  q10((10))
+  q11(((11)))
+  q12((12))
+  q0 -->|a| q1
+  q1 -->|eps| q5
+  q2 -->|b| q3
+  q3 -->|eps| q5
+  q4 -->|eps| q0
+  q4 -->|eps| q2
+  q6 -->|a| q7
+  q7 -->|eps| q10
+  q8 -->|b| q9
+  q9 -->|eps| q8
+  q9 -->|eps| q11
+  q10 -->|eps| q8
+  q10 -->|eps| q11
+  q12 -->|eps| q4
+  q12 -->|eps| q6
+  classDef startState fill:#bbdefb,stroke:#1e88e5,stroke-width:2px
+  classDef acceptState fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+  class q12 startState
+  class q5 acceptState
+  class q11 acceptState
+--- MERMAID NFA END ---

@@ -1,0 +1,14 @@
+--- MERMAID NFA BEGIN ---
+graph TD
+  start([start])
+  start --> q2
+  q0((0))
+  q1(((1)))
+  q2((2))
+  q0 -->|a| q1
+  q2 -->|eps| q0
+  classDef startState fill:#bbdefb,stroke:#1e88e5,stroke-width:2px
+  classDef acceptState fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+  class q2 startState
+  class q1 acceptState
+--- MERMAID NFA END ---
