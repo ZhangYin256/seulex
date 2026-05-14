@@ -15,7 +15,7 @@ trap 'rm -rf "$WORK_DIR"' EXIT
 
 "$BISON_EXE" -d "$SOURCE_DIR/test/c99.y" -o "$WORK_DIR/c99.tab.c"
 "$SEULEX_EXE" -o "$WORK_DIR/c99.yy.c" "$SOURCE_DIR/test/c99.l" >/dev/null
-"$CC_EXE" "$WORK_DIR/c99.tab.c" "$WORK_DIR/c99.yy.c" -lfl -o "$WORK_DIR/c99parser"
+"$CC_EXE" -Wno-implicit-function-declaration "$WORK_DIR/c99.tab.c" "$WORK_DIR/c99.yy.c" -lfl -o "$WORK_DIR/c99parser"
 
 printf 'int x;\n' | "$WORK_DIR/c99parser" >/dev/null
 

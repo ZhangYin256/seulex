@@ -66,14 +66,6 @@
 
 
 
-/* First part of user prologue.  */
-#line 1 "/home/zhangyin/Projects/seulex/test/c99.y"
-
-#include <stdio.h>
-extern int yylex(void);
-void yyerror(char const *s);
-
-#line 77 "/home/zhangyin/Projects/seulex/test_outputs/c99.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -96,7 +88,109 @@ void yyerror(char const *s);
 #  endif
 # endif
 
-#include "c99.tab.h"
+/* Use api.header.include to #include this header
+   instead of duplicating it here.  */
+#ifndef YY_YY_Y_TAB_H_INCLUDED
+# define YY_YY_Y_TAB_H_INCLUDED
+/* Debug traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 0
+#endif
+#if YYDEBUG
+extern int yydebug;
+#endif
+
+/* Token kinds.  */
+#ifndef YYTOKENTYPE
+# define YYTOKENTYPE
+  enum yytokentype
+  {
+    YYEMPTY = -2,
+    YYEOF = 0,                     /* "end of file"  */
+    YYerror = 256,                 /* error  */
+    YYUNDEF = 257,                 /* "invalid token"  */
+    IDENTIFIER = 258,              /* IDENTIFIER  */
+    CONSTANT = 259,                /* CONSTANT  */
+    STRING_LITERAL = 260,          /* STRING_LITERAL  */
+    SIZEOF = 261,                  /* SIZEOF  */
+    PTR_OP = 262,                  /* PTR_OP  */
+    INC_OP = 263,                  /* INC_OP  */
+    DEC_OP = 264,                  /* DEC_OP  */
+    LEFT_OP = 265,                 /* LEFT_OP  */
+    RIGHT_OP = 266,                /* RIGHT_OP  */
+    LE_OP = 267,                   /* LE_OP  */
+    GE_OP = 268,                   /* GE_OP  */
+    EQ_OP = 269,                   /* EQ_OP  */
+    NE_OP = 270,                   /* NE_OP  */
+    AND_OP = 271,                  /* AND_OP  */
+    OR_OP = 272,                   /* OR_OP  */
+    MUL_ASSIGN = 273,              /* MUL_ASSIGN  */
+    DIV_ASSIGN = 274,              /* DIV_ASSIGN  */
+    MOD_ASSIGN = 275,              /* MOD_ASSIGN  */
+    ADD_ASSIGN = 276,              /* ADD_ASSIGN  */
+    SUB_ASSIGN = 277,              /* SUB_ASSIGN  */
+    LEFT_ASSIGN = 278,             /* LEFT_ASSIGN  */
+    RIGHT_ASSIGN = 279,            /* RIGHT_ASSIGN  */
+    AND_ASSIGN = 280,              /* AND_ASSIGN  */
+    XOR_ASSIGN = 281,              /* XOR_ASSIGN  */
+    OR_ASSIGN = 282,               /* OR_ASSIGN  */
+    TYPE_NAME = 283,               /* TYPE_NAME  */
+    TYPEDEF = 284,                 /* TYPEDEF  */
+    EXTERN = 285,                  /* EXTERN  */
+    STATIC = 286,                  /* STATIC  */
+    AUTO = 287,                    /* AUTO  */
+    REGISTER = 288,                /* REGISTER  */
+    INLINE = 289,                  /* INLINE  */
+    RESTRICT = 290,                /* RESTRICT  */
+    CHAR = 291,                    /* CHAR  */
+    SHORT = 292,                   /* SHORT  */
+    INT = 293,                     /* INT  */
+    LONG = 294,                    /* LONG  */
+    SIGNED = 295,                  /* SIGNED  */
+    UNSIGNED = 296,                /* UNSIGNED  */
+    FLOAT = 297,                   /* FLOAT  */
+    DOUBLE = 298,                  /* DOUBLE  */
+    CONST = 299,                   /* CONST  */
+    VOLATILE = 300,                /* VOLATILE  */
+    VOID = 301,                    /* VOID  */
+    BOOL = 302,                    /* BOOL  */
+    COMPLEX = 303,                 /* COMPLEX  */
+    IMAGINARY = 304,               /* IMAGINARY  */
+    STRUCT = 305,                  /* STRUCT  */
+    UNION = 306,                   /* UNION  */
+    ENUM = 307,                    /* ENUM  */
+    ELLIPSIS = 308,                /* ELLIPSIS  */
+    CASE = 309,                    /* CASE  */
+    DEFAULT = 310,                 /* DEFAULT  */
+    IF = 311,                      /* IF  */
+    ELSE = 312,                    /* ELSE  */
+    SWITCH = 313,                  /* SWITCH  */
+    WHILE = 314,                   /* WHILE  */
+    DO = 315,                      /* DO  */
+    FOR = 316,                     /* FOR  */
+    GOTO = 317,                    /* GOTO  */
+    CONTINUE = 318,                /* CONTINUE  */
+    BREAK = 319,                   /* BREAK  */
+    RETURN = 320                   /* RETURN  */
+  };
+  typedef enum yytokentype yytoken_kind_t;
+#endif
+
+/* Value type.  */
+#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+typedef int YYSTYPE;
+# define YYSTYPE_IS_TRIVIAL 1
+# define YYSTYPE_IS_DECLARED 1
+#endif
+
+
+extern YYSTYPE yylval;
+
+
+int yyparse (void);
+
+
+#endif /* !YY_YY_Y_TAB_H_INCLUDED  */
 /* Symbol kind.  */
 enum yysymbol_kind_t
 {
@@ -652,30 +746,30 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    24,    24,    25,    26,    27,    31,    32,    33,    34,
-      35,    36,    37,    38,    39,    40,    44,    45,    49,    50,
-      51,    52,    53,    54,    58,    59,    60,    61,    62,    63,
-      67,    68,    72,    73,    74,    75,    79,    80,    81,    85,
-      86,    87,    91,    92,    93,    94,    95,    99,   100,   101,
-     105,   106,   110,   111,   115,   116,   120,   121,   125,   126,
-     130,   131,   135,   136,   140,   141,   142,   143,   144,   145,
-     146,   147,   148,   149,   150,   154,   155,   159,   163,   164,
-     168,   169,   170,   171,   172,   173,   174,   175,   179,   180,
-     184,   185,   189,   190,   191,   192,   193,   197,   198,   199,
-     200,   201,   202,   203,   204,   205,   206,   207,   208,   209,
-     210,   211,   215,   216,   217,   221,   222,   226,   227,   231,
-     235,   236,   237,   238,   242,   243,   247,   248,   249,   253,
-     254,   255,   256,   257,   261,   262,   266,   267,   271,   272,
-     273,   277,   281,   282,   287,   288,   289,   290,   291,   292,
-     293,   294,   295,   296,   297,   298,   299,   303,   304,   305,
-     306,   310,   311,   316,   317,   321,   322,   326,   327,   328,
-     332,   333,   337,   338,   342,   343,   344,   348,   349,   350,
-     351,   352,   353,   354,   355,   356,   357,   358,   362,   363,
-     364,   368,   369,   370,   371,   375,   379,   380,   384,   385,
-     389,   390,   391,   392,   393,   394,   398,   399,   400,   404,
-     405,   409,   410,   414,   415,   419,   420,   424,   425,   426,
-     430,   431,   432,   433,   434,   435,   439,   440,   441,   442,
-     443,   447,   448,   452,   453,   457,   458,   462,   463
+       0,    18,    18,    19,    20,    21,    25,    26,    27,    28,
+      29,    30,    31,    32,    33,    34,    38,    39,    43,    44,
+      45,    46,    47,    48,    52,    53,    54,    55,    56,    57,
+      61,    62,    66,    67,    68,    69,    73,    74,    75,    79,
+      80,    81,    85,    86,    87,    88,    89,    93,    94,    95,
+      99,   100,   104,   105,   109,   110,   114,   115,   119,   120,
+     124,   125,   129,   130,   134,   135,   136,   137,   138,   139,
+     140,   141,   142,   143,   144,   148,   149,   153,   157,   158,
+     162,   163,   164,   165,   166,   167,   168,   169,   173,   174,
+     178,   179,   183,   184,   185,   186,   187,   191,   192,   193,
+     194,   195,   196,   197,   198,   199,   200,   201,   202,   203,
+     204,   205,   209,   210,   211,   215,   216,   220,   221,   225,
+     229,   230,   231,   232,   236,   237,   241,   242,   243,   247,
+     248,   249,   250,   251,   255,   256,   260,   261,   265,   266,
+     267,   271,   275,   276,   281,   282,   283,   284,   285,   286,
+     287,   288,   289,   290,   291,   292,   293,   297,   298,   299,
+     300,   304,   305,   310,   311,   315,   316,   320,   321,   322,
+     326,   327,   331,   332,   336,   337,   338,   342,   343,   344,
+     345,   346,   347,   348,   349,   350,   351,   352,   356,   357,
+     358,   362,   363,   364,   365,   369,   373,   374,   378,   379,
+     383,   384,   385,   386,   387,   388,   392,   393,   394,   398,
+     399,   403,   404,   408,   409,   413,   414,   418,   419,   420,
+     424,   425,   426,   427,   428,   429,   433,   434,   435,   436,
+     437,   441,   442,   446,   447,   451,   452,   456,   457
 };
 #endif
 
@@ -1753,7 +1847,7 @@ yyreduce:
   switch (yyn)
     {
 
-#line 1757 "/home/zhangyin/Projects/seulex/test_outputs/c99.tab.c"
+#line 1851 "y.tab.c"
 
       default: break;
     }
@@ -1946,7 +2040,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 467 "/home/zhangyin/Projects/seulex/test/c99.y"
+#line 461 "../test/c99.y"
 
 #include <stdio.h>
 

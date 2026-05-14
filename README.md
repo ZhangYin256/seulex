@@ -120,9 +120,9 @@ SeuLex [OPTIONS] input.l
 # 在 test_outputs 或工程目标目录：
 cd /home/zhangyin/seulex/test_outputs
 # 1) 运行 bison 生成 parser 源
-bison -d ../test_inputs/c99.y -o c99.tab.c
+bison -d ../test/c99.y -o y.tab.c
 # 2) 运行 SeuLex 生成 scanner 源（如果尚未在上一步输出目录生成）
-../build/SeuLex -o c99.yy.c ../test_inputs/c99.l
+../build/SeuLex -o c99.yy.c ../test/c99.l
 # 3) 编译并链接（使用系统 C 编译器，并链接 libfl 或自行实现的支持）
 cc c99.tab.c c99.yy.c -lfl -o c99parser
 # libfl提供了程序的主函数
@@ -136,14 +136,37 @@ printf 'int x;\n' | ./c99parser
 - `bison -d` 生成 `c99.tab.h`（token 定义）和 `c99.tab.c`（parse 逻辑）。
 - 生成的 scanner 源文件会 `#include "c99.tab.h"`，因此在编译 scanner 时要保证头文件在包含路径下。
 
-## 完整的构建和使用命令
+## 使用 CSmith 进行随机测试
+
+[CSmith](https://github.com/csmith-project/csmith) 是一个随机 C 程序生成器，可用于对生成的语法分析器进行大规模随机测试。
+
+### 安装 CSmith
 
 ```bash
-# 在仓库根目录：
-cmake -S . -B build && cmake --build build --target SeuLex -j
-cd test_outputs
-bison -d ../test_inputs/c99.y -o c99.tab.c
-../build/SeuLex -o c99.yy.c ../test_inputs/c99.l
-cc c99.tab.c c99.yy.c -lfl -o c99parser
-printf 'int x;\n' | ./c99parser
+# 下载源码
+curl -sL https://github.com/csmith-project/csmith/archive/refs/tags/csmith-2.3.0.tar.gz | tar xz
+cd csmith-2.3.0
+# 配置、编译、安装
+cmake -B build -DCMAKE_INSTALL_PREFIX=~/.local
+cmake --build build -j$(nproc)
+cmake --install build
 ```
+
+### 生成测试并运行
+
+```bash
+# 生成 10 个随机 C 测试程序
+mkdir -p /tmp/csmith_tests
+for i in $(seq 1 10); do
+  csmith --no-argc --no-longlong -o /tmp/csmith_tests/test${i}.c
+done
+
+# 用生成的语法分析器解析每个文件
+cd /path/to/test_outputs
+for i in $(seq 1 10); do
+  ./c99parser < /tmp/csmith_tests/test${i}.c && echo "test${i}: OK" || echo "test${i}: FAIL"
+done
+```
+
+CSmith 生成的 C 代码遵循 C99 标准，覆盖了丰富的语法结构（指针、数组、结构体、控制流等），可有效检验语法分析器的完备性。
+

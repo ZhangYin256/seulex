@@ -12,6 +12,8 @@ IS          ((u|U)|(u|U)?(l|L|ll|LL)|(l|L|ll|LL)(u|U))
 #include "c99.tab.h"
 
 void count(void);   /* 计算词法元素所占用的列，在规则部分被使用，函数体在第二个%%之后 */
+void comment(void); /* forward declaration */
+int check_type(void); /* forward declaration */
 %}
 
 %%
