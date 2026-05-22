@@ -25,7 +25,6 @@
 推荐使用 CMake 构建（仓库已包含 CMakeLists）。在仓库根目录运行：
 
 ```bash
-cd /home/zhangyin/seulex
 cmake -S . -B build
 cmake --build build --target SeuLex -j
 ```

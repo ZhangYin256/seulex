@@ -1,5 +1,5 @@
 
-#line 3 "lex.yy.c"
+#line 2 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -441,8 +441,8 @@ char *yytext;
 #line 1 "./test1.l"
 #line 2 "./test1.l"
 int char_count = 0, digit_count = 0, space_count = 0, line_count = 0;
+#line 444 "lex.yy.c"
 #line 445 "lex.yy.c"
-#line 446 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -661,7 +661,7 @@ YY_DECL
 	{
 #line 4 "./test1.l"
 
-#line 665 "lex.yy.c"
+#line 664 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -749,7 +749,7 @@ YY_RULE_SETUP
 #line 10 "./test1.l"
 ECHO;
 	YY_BREAK
-#line 753 "lex.yy.c"
+#line 752 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 

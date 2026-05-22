@@ -29,9 +29,9 @@ int main(int argc, char *argv[]) {
     rule.regex_normal = converter.convert(rule.regex_original, spec.macros);
     // 构造抽象语法树（AST）
     rule.ast = parser.parse(rule.regex_normal);
-    if (rule.ast) {
-      std::cout << std::format("  AST: {}\n", *rule.ast);
-    }
+    // if (rule.ast) {
+    //   std::cout << std::format("  AST: {}\n", *rule.ast);
+    // }
     // 根据 AST 构建 NFA 片段
     auto frag = nfa_builder.build_from_ast(rule.ast.get());
     rule_starts.push_back(frag.start_id);
@@ -40,8 +40,8 @@ int main(int argc, char *argv[]) {
     states[frag.accept_id].is_accept = true;
     states[frag.accept_id].rule_index = rule.rule_number;
     states[frag.accept_id].action_index = rule.action_index;
-    std::cerr << "Rule " << rule.rule_number << ": " << rule.regex_original
-              << " => " << rule.regex_normal << "\n";
+    // std::cerr << "Rule " << rule.rule_number << ": " << rule.regex_original
+    //           << " => " << rule.regex_normal << "\n";
   }
 
   // 将所有规则的 NFA 片段连接起来，形成一个大的 NFA
