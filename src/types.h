@@ -61,8 +61,8 @@ struct NfaState {
   bool is_accept = false;                 // 是否为接受态
   int rule_index = -1;                    // 对应规则索引
   int action_index = -1;                  // 对应动作索引
-  bool is_trailing_accept = false;        // 是否为尾部上下文接受态
-  int original_rule_index = -1;           // 原始规则编号
+  // bool is_trailing_accept = false;        // 是否为尾部上下文接受态
+  // int original_rule_index = -1;           // 原始规则编号
 };
 
 // DFA 状态
@@ -72,9 +72,9 @@ struct DfaState {
   bool is_accept = false;           // 是否为接受态
   int rule_index = -1;              // 对应规则索引
   int action_index = -1;            // 对应动作索引
-  bool is_trailing_accept = false;  // 是否为尾部上下文接受态
-  int original_rule_index = -1;     // 原始规则编号
-  int trailing_length = 0;          // 需要回退的尾部长度
+  // bool is_trailing_accept = false;  // 是否为尾部上下文接受态
+  // int original_rule_index = -1;     // 原始规则编号
+  // int trailing_length = 0;          // 需要回退的尾部长度
   std::array<int, 256> transitions; // 状态转移表，-1 表示无转移
 };
 
@@ -92,9 +92,9 @@ struct MinDfa {
   int state_count;                                    // 状态总数
   std::vector<std::array<int, 256>> transition_table; // DFA 转移表
   std::vector<int> accept_action; // 接受态对应动作，-1 表示非接受态
-  std::vector<int>
-      trailing_original_rule;       // 尾部上下文对应的原始规则，-1 表示无
-  std::vector<int> trailing_length; // 尾部回退长度
+  // std::vector<int>
+  //     trailing_original_rule;       // 尾部上下文对应的原始规则，-1 表示无
+  // std::vector<int> trailing_length; // 尾部回退长度
   int start_state;                  // 普通起始状态
   int start_state_bol;              // 行首锚定起始状态
 };

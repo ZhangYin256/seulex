@@ -40,6 +40,7 @@ NfaFragment NfaBuilder::build_char_class(const RegexNode *node) {
   int a = create_state();
 
   std::array<bool, 256> allow{};
+  // 默认允许所有字符，如果是反向字符类则先全部禁止，再允许指定范围
   allow.fill(!node->char_class.negated);
 
   if (node->char_class.negated) {

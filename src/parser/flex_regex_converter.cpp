@@ -98,10 +98,11 @@ std::string FlexRegexConverter::expand_macro_reference(
     return "{" + name + "}";
   }
 
+  // insert返回的pair中second为true表示插入成功，false表示已经存在
   if (!visiting.insert(name).second) {
-    throw LexError("Cyclic macro definition detected: " + name);
+    throw LexError("寻在循环定义的宏: " + name);
   }
-
+  // 递归展开宏定义
   std::string expanded = expand_text(it->second, macros, visiting);
   visiting.erase(name);
   return "(" + expanded + ")";
@@ -131,8 +132,9 @@ std::string FlexRegexConverter::read_quoted_literal(const std::string &input,
 std::string FlexRegexConverter::read_char_class(const std::string &input,
                                                 size_t &pos) {
   std::string result;
-  result += input[pos++]; // consume '['
+  result += input[pos++]; // 消耗掉 '['
 
+  // 处理字符类内容，直到遇到未转义的 ']'
   bool escaped = false;
   while (pos < input.size()) {
     char c = input[pos++];

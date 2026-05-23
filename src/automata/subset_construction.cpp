@@ -12,7 +12,9 @@ SubsetConstruction::convert(const std::vector<NfaState> &nfa_states,
     return dfa_states;
   }
 
+  // NFA 状态集合到 DFA 状态 ID 的映射
   std::map<std::set<int>, int> state_map;
+  // 工作队列，存储待处理的 NFA 状态集合
   std::queue<std::set<int>> worklist;
 
   std::set<int> start_set = {nfa_start};
@@ -63,10 +65,12 @@ std::set<int> SubsetConstruction::epsilon_closure(
       continue;
     }
 
+    // 遍历当前状态的所有转移，寻找 epsilon 转移
     for (const auto &tr : nfa_states[current].transitions) {
       if (!tr.epsilon) {
         continue;
       }
+      // second是一个bool，真表示插入成功（即之前不存在该元素）
       if (closure.insert(tr.target_id).second) {
         worklist.push(tr.target_id);
       }
@@ -120,6 +124,8 @@ int SubsetConstruction::get_or_create_state(
   return dfa_states.back().id;
 }
 
+// 根据 NFA 状态集合确定对应的 DFA 接受状态元数据（规则索引和动作索引）
+// 返回 true 表示该集合对应一个接受状态，false 表示非接受状态
 bool SubsetConstruction::resolve_accept_metadata(
     const std::set<int> &nfa_set, const std::vector<NfaState> &nfa_states,
     int &rule_index, int &action_index) const {

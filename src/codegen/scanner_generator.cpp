@@ -32,12 +32,12 @@ bool ScannerGenerator::generate(const MinDfa &min_dfa, const SpecDocument &spec,
   (*ofs) << "#include <string.h>\n";
   // 没有必要，c99.l文件里自带
   // (*ofs) << "#include \"y.tab.h\"\n\n";
-  (*ofs) << "#ifndef SEULEX_YYTEXT_MAX\n#define SEULEX_YYTEXT_MAX 65536\n#endif\n";
-  (*ofs) << "static char *seulex_buf = NULL;\n";
-  (*ofs) << "static size_t seulex_n = 0;\n";
-  (*ofs) << "static size_t seulex_pos = 0;\n";
-  (*ofs) << "static char yytext[SEULEX_YYTEXT_MAX];\n";
-  (*ofs) << "int yyleng = 0;\n";
+  (*ofs) << "#ifndef SEULEX_YYTEXT_MAX\n#define SEULEX_YYTEXT_MAX 65536\n#endif\n"; // 定义 yytext 的最大长度
+  (*ofs) << "static char *seulex_buf = NULL;\n"; // 输入缓冲区，第一次调用 yylex 时分配并读取 stdin 内容
+  (*ofs) << "static size_t seulex_n = 0;\n"; // 输入缓冲区长度
+  (*ofs) << "static size_t seulex_pos = 0;\n"; // 输入缓冲区当前扫描位置
+  (*ofs) << "static char yytext[SEULEX_YYTEXT_MAX];\n"; // 匹配文本缓冲区，存储当前匹配的文本，供动作代码使用
+  (*ofs) << "int yyleng = 0;\n"; // 当前匹配文本长度，供动作代码使用
 
   // 前置代码块
   (*ofs) << "\n/* Prologue code blocks */\n";

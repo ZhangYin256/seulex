@@ -13,8 +13,8 @@ MinDfa make_min_dfa() {
   dfa.transition_table.resize(1);
   dfa.transition_table[0].fill(-1);
   dfa.accept_action = {-1};
-  dfa.trailing_original_rule = {-1};
-  dfa.trailing_length = {0};
+  // dfa.trailing_original_rule = {-1};
+  // dfa.trailing_length = {0};
   dfa.start_state = 0;
   dfa.start_state_bol = 0;
   return dfa;

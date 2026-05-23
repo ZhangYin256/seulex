@@ -119,7 +119,7 @@ SeuLex [OPTIONS] input.l
 # 在 test_outputs 或工程目标目录：
 cd /home/zhangyin/seulex/test_outputs
 # 1) 运行 bison 生成 parser 源
-bison -d ../test/c99.y -o y.tab.c
+bison -d ../test/c99.y -o c99.tab.c
 # 2) 运行 SeuLex 生成 scanner 源（如果尚未在上一步输出目录生成）
 ../build/SeuLex -o c99.yy.c ../test/c99.l
 # 3) 编译并链接（使用系统 C 编译器，并链接 libfl 或自行实现的支持）

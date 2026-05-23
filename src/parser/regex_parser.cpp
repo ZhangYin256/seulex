@@ -33,6 +33,7 @@ std::unique_ptr<RegexNode> RegexParser::parse_alternation() {
   return left;
 }
 
+// 解析连接操作
 std::unique_ptr<RegexNode> RegexParser::parse_concatenation() {
   auto left = parse_quantifier();
 
@@ -47,6 +48,7 @@ std::unique_ptr<RegexNode> RegexParser::parse_concatenation() {
   return left;
 }
 
+// 解析量词 *, +, ?
 std::unique_ptr<RegexNode> RegexParser::parse_quantifier() {
   auto atom = parse_atom();
 
